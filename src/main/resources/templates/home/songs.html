@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="/static/MyStyle.css" rel="stylesheet" type="text/css"/>
+    <title>Title</title>
+</head>
+<body>
+<table th:if="${!songs.isEmpty()}">
+    <thead>
+    <tr>
+        <th>SONG ID</th>
+        <th>SONG TITLE</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="song: ${songs}">
+        <td th:text="${song.songId}"></td>
+        <td th:text="${song.songName}"></td>
+    </tr>
+    </tbody>
+</table>
+<p th:if="${songs.isEmpty()}">No songs from the album to show at the moment...</p>
+</body>
+</html>

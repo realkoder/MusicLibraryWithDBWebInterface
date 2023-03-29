@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MyMusic</title>
+    <link href="/static/MyStyle.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<h1 id="hero--header">MY MUSIC</h1>
+
+<dialog id="myDialog" th:if="${showDialog}" open>
+    <p th:if="${completed}">Library updated!</p>
+    <p th:if="${!completed}">Library couldn't be updated...</p>
+    <button type="reset" onclick="closeDialog()">ok</button>
+</dialog>
+
+<script>
+    function closeDialog() {
+        var dialog = document.getElementById("myDialog");
+        dialog.close();
+    }
+</script>
+
+<a id="setup--btn" th:href="@{/setupCreateArtist}">
+    <button>CREATE NEW ARTIST</button>
+</a>
+
+<div class="tableContainer">
+    <table>
+        <thead>
+        <tr>
+            <th>ARTIST ID</th>
+            <th>ARTIST NAME</th>
+            <th>ACTION</th>
+            <th>DELETE</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="artist: ${artists}">
+            <td th:text="${artist.artistId}"></td>
+            <td th:text="${artist.artistName}"></td>
+            <td>
+                <form action="/viewAlbum" method="post">
+                <input type="hidden" name="artistId" th:value="${artist.artistId}">
+                <button type="submit">See all albums <span th:text="${artist.artistName}"/></button>
+                </form>
+            </td>
+            <td>
+                <form action="/deleteArtist" method="post">
+                    <input type="hidden" name="artistId" th:value="${artist.artistId}">
+                    <button type="submit">Delete <span th:text="${artist.artistName}"/> from library</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

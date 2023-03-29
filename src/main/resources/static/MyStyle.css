@@ -1,0 +1,55 @@
+body {
+    background-color: beige;
+}
+
+#hero--header  {
+    text-align: center;
+}
+
+#setup--btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tableContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+th {
+    background: lightblue;
+}
+
+td, th {
+    border: 1px solid steelblue;
+    text-align: center;
+    padding: 8px;
+}
+
+button {
+    border: none;
+    color: whitesmoke;
+    background: darkseagreen;
+    padding: 7px 10px;
+    text-align: center;
+    margin: 10px;
+    border-radius: 15px;
+
+}
+
+#myDialog {
+    background: crimson;
+    color: black;
+    size: 400px;
+    border-radius: 15px;
+}
+
+button:hover {
+    box-shadow: 2px 2px 2px #888888;
+}
